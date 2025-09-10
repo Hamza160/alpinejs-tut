@@ -10,20 +10,21 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- Scoping  -->
+    <!-- Getter & Setters  -->
     <div x-data="{
-        name: 'Hamza Ashraf',
-        age: 25,
-        gender: 'Male'
+        open:false,
+        get isOpen(){
+            return this.open
+        },
+        set isOpen(isOpen){
+            this.open = isOpen
+        },
+        toggle(){
+            this.isOpen = !this.isOpen
+        }
     }">
-        <div x-data="{
-            name: 'John',
-            age: 24,
-        }">
-            <div x-data="{name: 'Mary'}">
-                <p x-text="name"></p>
-            </div>
-        </div>
+        <button @click="toggle()">Open/Close</button>
+        <div x-show="open">Content...</div>
     </div>
 </body>
 </html>
