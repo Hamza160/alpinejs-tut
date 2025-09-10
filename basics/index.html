@@ -10,34 +10,25 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- x-data, x-text, x-html -->
-    <div x-data="{name:'Hamza', message:'Hello <b>World</b>!'}">
-        <p x-text="name"></p>
-        <p x-html="message"></p>
+    <!-- Data less components -->
+    <div x-data @click="alert('Hello World')">
+        Click me!
     </div>
+    <!-- Data coming from store   -->
+    <div x-data x-text="$store.currentUser.username"></div>
 
-    <div
-        x-data=""
-        x-text="await (await fetch('https://jsonplaceholder.typicode.com/todos/1')).text()"
-    ></div>
-    <br>
-    <!-- x-data with methods   -->
+    <!-- x-init   -->
+    <div x-init="console.log('Init')"></div>
     <div x-data="{
-        message:'click to change',
-        change(){
-            this.message = 'message changed'
+        init(){
+            console.log('i\'m initialized');
         }
-    }">
-        <span x-text="message" @click="change()"></span>
+    }"></div>
+    <div
+        x-data="{todo:{}}"
+        x-init="todo = await (await fetch('https://jsonplaceholder.typicode.com/todos/1')).json()"
+    >
+        <p x-text="todo.title"></p>
     </div>
-    <br>
-    <!-- Reu-sable Data   -->
-    <div x-data="dropdown">
-        <button @click="toggle()">Open/Close</button>
-        <div x-show="open" x-transition>
-            Content...
-        </div>
-    </div>
-
 </body>
 </html>
