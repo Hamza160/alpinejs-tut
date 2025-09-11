@@ -10,32 +10,13 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <style>
-        .yellow{
-            background-color: yellow;
-        }
-        .bordered{
-            border: 1px solid red;
-        }
-    </style>
-    <!-- x-bind: class, id, style -->
+    <!-- Challenge -->
     <div x-data="{
-        clicked:false
+        colors:['red', 'green', 'blue', 'orange']
     }">
-        <button class="bordered" @click="clicked = true" x-bind:class="clicked ? 'yellow' : ''" x-bind:id="clicked ? 'yellow' : ''">
-            Click me
-        </button>
-        <!--   Other Way     -->
-        <button class="bordered" @click="clicked = true" x-bind:class="{yellow:clicked}" x-bind:id="{yellow:clicked}">
-            Click me
-        </button>
-    </div>
-    <div x-data="{
-        clicked:false
-    }">
-        <button :style="{backgroundColor: clicked ? 'red' : ''}" @click="clicked = true">
-            Click me
-        </button>
+        <template x-for="color in colors" :key="color">
+            <div style="width:40px; height:40px" :style="{backgroundColor:color}"></div>
+        </template>
     </div>
 
 </body>
