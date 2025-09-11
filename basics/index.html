@@ -10,43 +10,33 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- x-if -->
-    <div x-data="{
-        open:false,
-        toggle(){
-            this.open = !this.open;
+    <style>
+        .yellow{
+            background-color: yellow;
         }
-    }">
-        <button @click="toggle()">Open/Close</button>
-        <!-- Element will hide from the UI -->
-        <template x-if="open">
-            <div>Content...</div>
-        </template>
-    </div>
-    <!-- x-for   -->
+        .bordered{
+            border: 1px solid red;
+        }
+    </style>
+    <!-- x-bind: class, id, style -->
     <div x-data="{
-        posts:[
-            {
-                id: 1,
-                title: 'Hello World 1',
-            },
-            {
-                id: 2,
-                title: 'Hello World 2',
-            }
-        ]
+        clicked:false
     }">
-        <template x-for="post in posts" :key="post.id">
-            <h1 x-text="post.title"></h1>
-        </template>
+        <button class="bordered" @click="clicked = true" x-bind:class="clicked ? 'yellow' : ''" x-bind:id="clicked ? 'yellow' : ''">
+            Click me
+        </button>
+        <!--   Other Way     -->
+        <button class="bordered" @click="clicked = true" x-bind:class="{yellow:clicked}" x-bind:id="{yellow:clicked}">
+            Click me
+        </button>
     </div>
-    <!-- x-for in range -->
     <div x-data="{
+        clicked:false
+    }">
+        <button :style="{backgroundColor: clicked ? 'red' : ''}" @click="clicked = true">
+            Click me
+        </button>
+    </div>
 
-    }">
-        <template x-for="n in 5" :key="n">
-            <h2 x-text="n"></h2>
-        </template>
-    </div>
 </body>
 </html>
