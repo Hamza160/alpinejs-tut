@@ -10,21 +10,43 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- Getter & Setters  -->
+    <!-- x-if -->
     <div x-data="{
         open:false,
-        get isOpen(){
-            return this.open
-        },
-        set isOpen(isOpen){
-            this.open = isOpen
-        },
         toggle(){
-            this.isOpen = !this.isOpen
+            this.open = !this.open;
         }
     }">
         <button @click="toggle()">Open/Close</button>
-        <div x-show="open">Content...</div>
+        <!-- Element will hide from the UI -->
+        <template x-if="open">
+            <div>Content...</div>
+        </template>
+    </div>
+    <!-- x-for   -->
+    <div x-data="{
+        posts:[
+            {
+                id: 1,
+                title: 'Hello World 1',
+            },
+            {
+                id: 2,
+                title: 'Hello World 2',
+            }
+        ]
+    }">
+        <template x-for="post in posts" :key="post.id">
+            <h1 x-text="post.title"></h1>
+        </template>
+    </div>
+    <!-- x-for in range -->
+    <div x-data="{
+
+    }">
+        <template x-for="n in 5" :key="n">
+            <h2 x-text="n"></h2>
+        </template>
     </div>
 </body>
 </html>
