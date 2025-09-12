@@ -10,13 +10,20 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- Challenge -->
-    <div x-data="{
-        colors:['red', 'green', 'blue', 'orange']
-    }">
-        <template x-for="color in colors" :key="color">
-            <div style="width:40px; height:40px" :style="{backgroundColor:color}"></div>
-        </template>
+    <!-- x-on -->
+    <div x-data style="display: flex; flex-direction:column; justify-content: center;align-items: center; gap: 10px">
+        <button @click="console.log('Clicked')">Clicked 11</button>
+        <input type="text" @keyup="console.log('keyup')" placeholder="Key Up"/>
+        <input type="text" @keyup.enter="console.log('Key Enter')" placeholder="Key Enter"/>
+        <input type="text" @keyup.shift.enter="console.log('Shift + Enter')" placeholder="Shift + Enter"/>
+        <input type="text" @keyup.debounce="console.log('Debounce')" placeholder="Debounce"/>
+        <br>
+        <div x-data="{modal:false}">
+            <button @click="modal = true">Show Modal</button>
+            <div x-show="modal" @click.outside="modal = false">
+                Content...
+            </div>
+        </div>
     </div>
 
 </body>
