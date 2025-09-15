@@ -10,10 +10,16 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- x-model -->
-    <div x-data="{keyword:null}">
-        <input type="text" x-model="keyword" placeholder="Enter a keyword here">
-        <p x-text="keyword"></p>
+    <!-- Challenge -->
+    <div x-data="{
+        btnText:'Click Me!',
+        btnBgColor:'#ff0000',
+        btnId:''
+    }">
+        <button x-text="btnText" :style="{backgroundColor:btnBgColor}" :id="btnId"></button>
+        <input type="text" x-model="btnText" />
+        <input type="text" x-model.debounce.500ms="btnBgColor" />
+        <input type="text" x-model="btnId"/>
     </div>
 </body>
 </html>
