@@ -10,26 +10,10 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- x-on -->
-    <div x-data @scroll.window="console.log('scroll')" @edit="console.log('edit was trigger')" style="display: flex; flex-direction:column; justify-content: center;align-items: center; gap: 10px">
-        <button @click="console.log('Clicked', $event)">Clicked 11</button>
-        <input type="text" @keyup="console.log('keyup')" placeholder="Key Up"/>
-        <input type="text" @keyup.enter="console.log('Key Enter')" placeholder="Key Enter"/>
-        <input type="text" @keyup.shift.enter="console.log('Shift + Enter')" placeholder="Shift + Enter"/>
-        <input type="text" @keyup.debounce="console.log('Debounce')" placeholder="Debounce"/>
-        <input type="text" @keyup.throttle="console.log('throttle')" placeholder="Throttle"/>
-
-        <!-- Dispatch Custom Event -->
-        <button @click="$dispatch('edit')">Edit</button>
-
-        <br>
-        <div x-data="{modal:false}">
-            <button @click="modal = true">Show Modal</button>
-            <div x-show="modal" @click.outside="modal = false">
-                Content...
-            </div>
-        </div>
+    <!-- x-model -->
+    <div x-data="{keyword:null}">
+        <input type="text" x-model="keyword" placeholder="Enter a keyword here">
+        <p x-text="keyword"></p>
     </div>
-
 </body>
 </html>
