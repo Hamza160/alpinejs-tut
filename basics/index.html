@@ -10,11 +10,10 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- x-ignore -->
-    <div x-data="{name:'Hamza'}">
-        <div x-ignore>
-            <p x-text="name"></p>
-        </div>
+    <!-- x-ref -->
+    <div x-data>
+        <input x-ref="inputEmail" type="text" placeholder="Email">
+        <button @click="$refs.inputEmail.style.borderColor = 'red'">Click</button>
     </div>
 </body>
 </html>
