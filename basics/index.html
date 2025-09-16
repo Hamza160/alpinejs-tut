@@ -10,16 +10,11 @@
     <title>AlpineJs Course</title>
 </head>
 <body>
-    <!-- Challenge -->
-    <div x-data="{
-        btnText:'Click Me!',
-        btnBgColor:'#ff0000',
-        btnId:''
-    }">
-        <button x-text="btnText" :style="{backgroundColor:btnBgColor}" :id="btnId"></button>
-        <input type="text" x-model="btnText" />
-        <input type="text" x-model.debounce.500ms="btnBgColor" />
-        <input type="text" x-model="btnId"/>
+    <!-- x-data -->
+    <div x-data="{name:'Hamza', message:null}">
+        <p x-effect="message = 'Hello ' + name"></p>
+        <p x-text="message"></p>
+        <button @click="name = 'John'">Change Name</button>
     </div>
 </body>
 </html>
